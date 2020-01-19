@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>List Artists Page</h1>
+  <p class="lead">Below the list of the artists in the Art Gallery Database<br><b>Sorted by:</b> {{attr_c}}<br><b>In order:</b> {{sort_choice}}</p>
+</div>
+
+{% if list_query_result %}
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Artist_Id</th>
+        <th>Title</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>DOB</th>
+        <th>St_Apt_Num</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Country</th>
+        <th>Intl Code</th>
+        <th>Area Code</th>
+        <th>P_Number</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for row in list_query_result %}
+      <tr>
+        <th scope="row">{{row['Artist_Id']}}</th>
+        <td>{{row['Title']}}</td>
+        <td>{{row['FName']}}</td>
+        <td>{{row['MName']}}</td>
+        <td>{{row['LName']}}</td>
+        <td>{{row['DOB']}}</td>
+        <td>{{row['St_Apt_Num']}}</td>
+        <td>{{row['Street']}}</td>
+        <td>{{row['City']}}</td>
+        <td>{{row['State']}}</td>
+        <td>{{row['Zip']}}</td>
+        <td>{{row['Country']}}</td>
+        <td>{{row['Intl_Code']}}</td>
+        <td>{{row['Area_Code']}}</td>
+        <td>{{row['P_Number']}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%else %}
+  <h3>No Artists are presently in DB.</h3>
+{% endif %}
+
+{% endblock %}

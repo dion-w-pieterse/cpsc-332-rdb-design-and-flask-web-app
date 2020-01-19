@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>List Artwork by Selected Type</h1>
+  <p class="lead">Below is a list of all the artwork by the type: {{the_type}}.</p>
+</div>
+
+{% if t_query_result %}
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Artwork</th>
+        <th>Artwork Type Name</th>
+        <th>Artwork Price</th>
+        <th>Artwork Date of Creation</th>
+        <th>Artwork Date Acquired By Gallery</th>
+        <th>Artist Title</th>
+        <th>Artist First Name</th>
+        <th>Artist Middle Name</th>
+        <th>Artist Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for row in t_query_result %}
+      <tr>
+        <th scope="row">{{row['Artwork_Title']}}</th>
+        <td>{{row['Type_Name']}}</td>
+        <td>{{row['Price']}}</td>
+        <td>{{row['AW_DOC']}}</td>
+        <td>{{row['AW_DAG']}}</td>
+        <td>{{row['Title']}}</td>
+        <td>{{row['FName']}}</td>
+        <td>{{row['MName']}}</td>
+        <td>{{row['LName']}}</td>
+
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%else %}
+  <h3>There is no artwork presently in DB matching your query.</h3>
+{% endif %}
+
+{% endblock %}

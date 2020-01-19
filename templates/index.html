@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>Art Gallery DB App</h1>
+  <p class="lead">Welcome to Art Gallery Application Home page, please interact with the database via the user interface below:</p>
+</div>
+
+<div class="container">
+
+<div class="row">
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add an Artist to Database</h5>
+        <p class="card-text">Click to add an artist.</p>
+        <a href="{{ url_for('add_artist') }}" class="btn btn-primary">Click to Add New Artist</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">List All Artists by Attribute &amp; Sort Order</h5>
+        <p class="card-text">Click here to view a list of all artist by chosen sort order.</p>
+        <!-- New form -->
+        <!-- create specific form name for this particular card-->
+        <form action="" method="post">
+            {{ list_artists_sorted_form.hidden_tag() }}
+
+            <div class="form-group">
+              {{ list_artists_sorted_form.attr_choice.label }}
+              {{ list_artists_sorted_form.attr_choice }}
+              {% for error in list_artists_sorted_form.attr_choice.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+              <br>
+              {{ list_artists_sorted_form.asc_desc_choice.label }}
+              {{ list_artists_sorted_form.asc_desc_choice }}
+              {% for error in list_artists_sorted_form.asc_desc_choice.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              {{ list_artists_sorted_form.submit(class="btn btn-primary") }}
+            </div>
+          </form>
+        <!-- END form section-->
+        <!-- End new form -->
+
+      </div>
+    </div>
+  </div>
+</div><!-- end row -->
+
+<div class="row">
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Find Artwork Details by Type</h5>
+        <p class="card-text">Please select your preferred type.</p>
+        <!-- create specific form name for this particular card-->
+        <form action="" method="post">
+            {{ artist_by_type_form.hidden_tag() }}
+
+            <div class="form-group">
+              {{ artist_by_type_form.type_art.label }}
+              {{ artist_by_type_form.type_art }}
+              {% for error in artist_by_type_form.type_art.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              {{ artist_by_type_form.submit(class="btn btn-primary") }}
+            </div>
+          </form>
+        <!-- END form section-->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">View Artists by Event</h5>
+        <p class="card-text">Please select the art show you are interested in.</p>
+
+        <!-- create specific form name for this particular card-->
+        <form action="" method="post">
+            {{ artist_event_form.hidden_tag() }}
+
+            <div class="form-group">
+              {{ artist_event_form.event.label }}
+              {{ artist_event_form.event }}
+              {% for error in artist_event_form.event.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </div>
+            <div class="form-group">
+              {{ artist_event_form.submit(class="btn btn-primary") }}
+            </div>
+          </form>
+        <!-- END form section-->
+
+      </div>
+    </div>
+  </div>
+</div><!-- end row -->
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">List All Artists and Their Style</h5>
+        <p class="card-text">Click to list all the artists and their respective style of art.</p>
+        <a href="{{ url_for('artists_and_styles') }}" class="btn btn-primary">List All Artists and Respective Style</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">List All Artwork Authors and Type</h5>
+        <p class="card-text">Click to view authors of all artwork and their respective type.</p>
+        <a href="{{ url_for('list_artwork_details') }}" class="btn btn-primary">List Artwork Authors and Type</a>
+      </div>
+    </div>
+  </div>
+</div><!-- end row -->
+</div>
+
+{% endblock %}

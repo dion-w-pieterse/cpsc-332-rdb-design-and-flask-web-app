@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>List Artwork Authors and Type</h1>
+  <p class="lead">Below is a list of all the artwork authors and its type.</p>
+</div>
+
+{% if AfD_Table_Result %}
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Artwork</th>
+        <th>Artist Title</th>
+        <th>Artist First Name</th>
+        <th>Artist Middle Name</th>
+        <th>Artist Last Name</th>
+        <th>Type of Artwork</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for row in AfD_Table_Result %}
+      <tr>
+        <th scope="row">{{row['Artwork_Title']}}</th>
+        <td>{{row['Title']}}</td>
+        <td>{{row['FName']}}</td>
+        <td>{{row['MName']}}</td>
+        <td>{{row['LName']}}</td>
+        <td>{{row['Type_Name']}}</td>
+
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%else %}
+  <h3>There is no artwork presently in DB.</h3>
+{% endif %}
+
+{% endblock %}

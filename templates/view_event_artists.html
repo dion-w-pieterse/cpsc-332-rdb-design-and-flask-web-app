@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>View Artists By Event: {{the_event}}</h1>
+  <p class="lead">This is the list of all artists that are showcasing their work at the chosen event.</p>
+</div>
+
+
+{% if query_result %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Artist_Id</th>
+      <th>Title</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>DOB</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for row in query_result %}
+    <tr>
+      <th scope="row">{{row['Artist_Id']}}</th>
+      <td>{{row['Title']}}</td>
+      <td>{{row['FName']}}</td>
+      <td>{{row['MName']}}</td>
+      <td>{{row['LName']}}</td>
+      <td>{{row['DOB']}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+{%else %}
+  <h3>No Artists are presently in DB.</h3>
+{% endif %}
+
+{% endblock %}

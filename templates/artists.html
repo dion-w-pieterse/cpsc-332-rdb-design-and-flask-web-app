@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>Artists Page, Artist ID: {{artist_id}}</h1>
+  <p class="lead">This page displays specific information for one artist selected.</p>
+</div>
+
+
+{% if artist %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Artist_Id</th>
+      <th>Title</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>DOB</th>
+      <th>St_Apt_Num</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th>Intl Code</th>
+      <th>Area Code</th>
+      <th>P_Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{artist['Artist_Id']}}</th>
+      <td>{{artist['Title']}}</td>
+      <td>{{artist['FName']}}</td>
+      <td>{{artist['MName']}}</td>
+      <td>{{artist['LName']}}</td>
+      <td>{{artist['DOB']}}</td>
+      <td>{{artist['St_Apt_Num']}}</td>
+      <td>{{artist['Street']}}</td>
+      <td>{{artist['City']}}</td>
+      <td>{{artist['State']}}</td>
+      <td>{{artist['Zip']}}</td>
+      <td>{{artist['Country']}}</td>
+      <td>{{artist['Intl_Code']}}</td>
+      <td>{{artist['Area_Code']}}</td>
+      <td>{{artist['P_Number']}}</td>
+    </tr>
+  </tbody>
+  </table>
+{%else %}
+  <h3>There is no artist by that Artist ID Number in the Database.</h3>
+{% endif %}
+
+{% endblock %}
