@@ -10,7 +10,7 @@ MarkupSafe==1.1.1
 mysql-connector==2.2.9
 pycparser==2.19
 PyMySQL==0.9.3
-PyYAML==5.1.2
+PyYAML==5.4
 six==1.13.0
 Werkzeug==0.16.0
 WTForms==2.2.1
